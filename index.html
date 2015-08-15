@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Timer</title>
+	</head>
+	<body style="height:90%;">
+		<canvas id="canvas" style="display:block; border: 1px solid #AAA;">
+		</canvas>
+		<div id="ballNum"></div>
+	</body>
+	<script type="text/javascript" src="numbers.js"></script>
+	<script type="text/javascript" src="lib.func.js"></script>
+	<script type="text/javascript">
+	
+		window.onload = function(){
+			myColor = [
+				"#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00",
+				"#669900","#FFBB33","#FF8800","#FF4444","#CC0000"
+				];
+			allBall = [];
+			
+			lTime = getMyTime();
+			radius = 13;
+			diff = 3;
+			canvas = document.getElementById("canvas");
+			canvas.height = window.innerHeight - 100;
+			canvas.width = window.innerWidth - 100;
+			cxt = canvas.getContext('2d');
+			setInterval(function(){
+				cxt.clearRect(0, 0, cxt.canvas.width, cxt.canvas.height);
+				drawTime(getMyTime(), 39, 100);
+				updateBalls();
+				document.getElementById('ballNum').innerHTML = allBall.length;
+			}, 50);
+		};
+		
+		window.onresize = function(){
+			canvas.height = window.innerHeight - 100;
+			canvas.width = window.innerWidth - 100;
+		};
+	</script>
+</html>
